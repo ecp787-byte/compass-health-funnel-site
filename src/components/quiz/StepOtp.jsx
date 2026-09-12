@@ -28,18 +28,20 @@ export default function StepOtp({ phone, onVerified, onChangeNumber }) {
   const [resendSeconds, setResendSeconds] = useState(RESEND_COOLDOWN);
   const [sending, setSending] = useState(false);
   const [verifying, setVerifying] = useState(false);
-  const [sendError, setSendError] = useState(false);
+  const [sendError, setSendError] = useState(null);
   const refs = useRef([]);
 
   async function sendCode() {
     setSending(true);
-    setSendError(false);
+    setSendError(null);
     setDigits(['', '', '', '', '', '']);
     setInvalid(false);
     const result = await sendOtp(phone);
     setSending(false);
     if (!result.sent) {
-      setSendError(true);
+      // Prefer the backend's actual error (e.g. a Twilio-side rejection)
+      // over the generic "still waking up" message when we have one.
+      setSendError(result.error || 'generic');
       return;
     }
     setDevCode(result.devCode);
@@ -137,7 +139,10 @@ export default function StepOtp({ phone, onVerified, onChangeNumber }) {
       </div>
 
       {invalid && <p className="quiz-otp-error">That code didn't match. Please try again.</p>}
-      {sendError && (
+      {sendError && sendError !== 'generic' && (
+        <p className="quiz-otp-error">Couldn't send a code: {sendError}</p>
+      )}
+      {sendError === 'generic' && (
         <p className="quiz-otp-error">
           Couldn't reach the server to send a code — the backend may just be waking up (it can take
           up to a minute after being idle). Try Resend in a moment.

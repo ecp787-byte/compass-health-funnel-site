@@ -48,7 +48,12 @@ export async function sendOtp(phone) {
     method: 'POST',
     body: JSON.stringify({ phone }),
   });
-  return { sent: result.ok, devCode: result.data?.devCode ?? null, networkError: !!result.networkError };
+  return {
+    sent: result.ok,
+    devCode: result.data?.devCode ?? null,
+    networkError: !!result.networkError,
+    error: result.data?.error ?? null,
+  };
 }
 
 /** POST /api/otp/verify — { verified }. */
