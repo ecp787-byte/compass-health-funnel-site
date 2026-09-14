@@ -51,9 +51,14 @@ function useArticleSeo(article) {
 export default function ArticlePage({ article }) {
   useArticleSeo(article);
   const category = getCategory(article.category);
+  // Cap "Related reading" at 3 cards even when an article's internalLinks
+  // data has more - a long wall of cross-links at the bottom of every post
+  // reads as clutter rather than a curated recommendation. The full list
+  // stays in the data file in case it's useful elsewhere later.
   const related = article.internalLinks
     .map((link) => ARTICLES_BY_SLUG[link.slug])
-    .filter(Boolean);
+    .filter(Boolean)
+    .slice(0, 3);
 
   return (
     <div className="learn-page">
