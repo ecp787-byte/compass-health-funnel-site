@@ -37,9 +37,12 @@
     radial-gradient(circle at 104% 0%, rgba(79, 160, 172, 0.10) 0%, transparent 38%);
 
   --error: #d14343;
-  --radius-s: 10px;
-  --radius-m: 16px;
-  --radius-l: 24px;
+  /* Restrained radii - premium fintech/editorial surfaces read as more
+     deliberate at a tighter radius than the "everything is a pill or a
+     rounded blob" SaaS-template default. */
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 18px;
   --font-display: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
   --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
