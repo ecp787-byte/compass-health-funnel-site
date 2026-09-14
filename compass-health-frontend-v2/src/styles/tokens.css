@@ -1,0 +1,45 @@
+/* Compass Health brand tokens — a Veritas company.
+   Rebuilt around the approved logo sheet: deep Navy (the mark's dark facets,
+   ring, and wordmark) and Teal (the mark's light facets), sampled directly
+   from that artwork. Paper background, Ink text. The teal/navy pairing
+   carries through gradients, glows, and accents so the whole funnel reads
+   as one identity with the mark, not a palette layered on top of it. */
+:root {
+  --bg: #f6f7f5;           /* Paper */
+  --surface: #ffffff;
+  --surface-alt: #eef3f3;  /* Mist, cool-toned to match teal */
+  --line: rgba(12, 44, 71, 0.12);
+  --line-strong: rgba(12, 44, 71, 0.22);
+  --text: #0c2c47;         /* Ink — sampled from the logo wordmark */
+  --text-muted: #5b6b72;   /* Slate */
+
+  --accent: #1c6b80;       /* Compass Teal — selection, links, primary UI */
+  --accent-soft: rgba(28, 107, 128, 0.1);
+  --accent-2: #4fa0ac;     /* Icy Teal — the mark's light facets */
+  --accent-2-soft: rgba(79, 160, 172, 0.14);
+  --accent-3: #0c2c47;     /* Navy — the mark's dark facets, for contrast tints */
+  --accent-3-soft: rgba(12, 44, 71, 0.09);
+  --accent-4: #7fc4ce;     /* Pale Ice — lightest tint, for variety */
+  --accent-4-soft: rgba(127, 196, 206, 0.18);
+
+  --btn-bg: #17566a;       /* CTA solid fallback */
+  --btn-gradient: linear-gradient(135deg, #4fa0ac 0%, #1c6b80 55%, #0c2c47 100%);
+  --btn-fg: #ffffff;
+  --btn-shadow: 0 12px 28px -10px rgba(12, 44, 71, 0.5);
+
+  --progress-gradient: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+  --aurora-bg:
+    radial-gradient(circle at 14% -8%, rgba(28, 107, 128, 0.18) 0%, transparent 46%),
+    radial-gradient(circle at 106% 6%, rgba(79, 160, 172, 0.18) 0%, transparent 44%),
+    radial-gradient(circle at 50% 122%, rgba(12, 44, 71, 0.14) 0%, transparent 52%);
+  --aurora-bg-soft:
+    radial-gradient(circle at 8% -12%, rgba(12, 44, 71, 0.10) 0%, transparent 40%),
+    radial-gradient(circle at 104% 0%, rgba(79, 160, 172, 0.10) 0%, transparent 38%);
+
+  --error: #d14343;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --font-display: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
