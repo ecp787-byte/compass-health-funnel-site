@@ -8,7 +8,17 @@
 // and renders a plain, unanimated element when it's set - motion is a
 // progressive enhancement here, never a requirement for the content to
 // appear.
-import { useRef } from 'react';
+//
+// It also checks document.visibilityState at mount. Chrome throttles
+// requestAnimationFrame in backgrounded tabs, and Framer's tweens are
+// rAF-driven - a "load" reveal that starts in a hidden tab (opened in the
+// background, or restored by the OS) can get stuck at its initial,
+// invisible frame indefinitely, since it never gets a tick to animate on.
+// Rather than let critical content (the hero headline, in particular) stay
+// invisible waiting on frames that may not come, a reveal that starts
+// hidden skips straight to its settled state - the same fallback used for
+// prefers-reduced-motion.
+import { useRef, useState } from 'react';
 import { motion, useReducedMotion, useMotionValue, useSpring } from 'framer-motion';
 
 // A fast-out, gentle-settle curve with no overshoot - reads as precise
@@ -16,8 +26,17 @@ import { motion, useReducedMotion, useMotionValue, useSpring } from 'framer-moti
 export const EASE = [0.22, 1, 0.36, 1];
 export const DURATION = 0.6;
 
+function usePageWasHiddenAtMount() {
+  const [hidden] = useState(
+    () => typeof document !== 'undefined' && document.visibilityState === 'hidden'
+  );
+  return hidden;
+}
+
 export function useMotionSafe() {
-  return !useReducedMotion();
+  const reduced = useReducedMotion();
+  const hiddenAtMount = usePageWasHiddenAtMount();
+  return !reduced && !hiddenAtMount;
 }
 
 // Fades + lifts children into place. mode="load" runs immediately (hero
