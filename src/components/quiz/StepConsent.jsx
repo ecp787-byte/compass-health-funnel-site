@@ -8,17 +8,14 @@
 // for legal to manage).
 const CONSENT_COPY = {
   text:
-    "By checking this box and clicking Submit, I agree that Compass Health and its " +
-    'licensed agents may contact me at the phone number and email address provided above — ' +
-    'including by call, text (SMS/MMS), and email, and using an automatic telephone dialing ' +
-    'system or prerecorded/artificial voice — about health insurance options, even if my number ' +
-    'is on a Do Not Call list. I understand consent is not a condition of purchase, message and ' +
-    'data rates may apply, message frequency varies, and I can reply STOP to opt out of texts at ' +
-    'any time.',
+    'I agree Compass Health may share my information with licensed insurance agents contracted ' +
+    'with Veritas Insurance Solutions, and that Compass Health and those agents may contact me ' +
+    'by call, text, or email — including by autodialer or prerecorded voice — about health ' +
+    'insurance options, even if I’m on a Do Not Call list. Consent isn’t required to get a ' +
+    'quote. Msg & data rates may apply. Reply STOP to opt out.',
   links: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms & Conditions', href: '#' },
-    { label: 'Licensing & Disclosures', href: '#' },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms & Conditions', href: '/terms' },
   ],
 };
 
@@ -43,7 +40,7 @@ export default function StepConsent({ checked, onChange, summary }) {
 
       <div className="quiz-consent-links">
         {CONSENT_COPY.links.map((l) => (
-          <a key={l.label} href={l.href}>
+          <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer">
             {l.label}
           </a>
         ))}

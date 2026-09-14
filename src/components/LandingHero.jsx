@@ -53,9 +53,10 @@ export default function LandingHero({ onStart }) {
       </div>
 
       <p className="landing-footnote">
-        Compass Health, a Veritas company, is a licensed insurance agency and is not affiliated
-        with or endorsed by any government agency, including the federal Health Insurance
-        Marketplace or Medicare.
+        Compass Health, a Veritas company, connects you with licensed insurance agents
+        contracted with Veritas Insurance Solutions. Compass Health does not sell insurance
+        directly and is not affiliated with or endorsed by any government agency, including the
+        federal Health Insurance Marketplace or Medicare.
       </p>
     </div>
   );
