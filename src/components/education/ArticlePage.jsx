@@ -69,7 +69,16 @@ export default function ArticlePage({ article }) {
           {category && <span>{category.label}</span>}
         </nav>
 
-        <p className="article-eyebrow">{category?.label}</p>
+        <div className={`article-eyebrow-row${category ? ` cat-tint-${category.accent}` : ''}`}>
+          {category?.icon && (
+            <span className="cat-badge cat-badge-sm" aria-hidden="true">
+              <svg className="icon">
+                <use href={`#${category.icon}`} />
+              </svg>
+            </span>
+          )}
+          <p className="article-eyebrow">{category?.label}</p>
+        </div>
         <h1 className="article-title">{article.h1}</h1>
         <p className="article-dek">{article.dek}</p>
 
@@ -130,12 +139,19 @@ export default function ArticlePage({ article }) {
           <section className="article-related">
             <h2 className="article-h2">Related reading</h2>
             <div className="article-related-grid">
-              {related.map((r) => (
-                <a className="article-related-card" href={`/learn/${r.slug}`} key={r.slug}>
-                  <span className="article-related-eyebrow">{getCategory(r.category)?.label}</span>
-                  <span className="article-related-title">{r.h1}</span>
-                </a>
-              ))}
+              {related.map((r) => {
+                const rCategory = getCategory(r.category);
+                return (
+                  <a
+                    className={`article-related-card${rCategory ? ` cat-tint-${rCategory.accent}` : ''}`}
+                    href={`/learn/${r.slug}`}
+                    key={r.slug}
+                  >
+                    <span className="article-related-eyebrow">{rCategory?.label}</span>
+                    <span className="article-related-title">{r.h1}</span>
+                  </a>
+                );
+              })}
             </div>
           </section>
         )}

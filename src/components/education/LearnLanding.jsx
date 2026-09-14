@@ -14,8 +14,20 @@ import {
 function ArticleCard({ article }) {
   const category = getCategory(article.category);
   return (
-    <a className="learn-card" href={`/learn/${article.slug}`}>
-      <span className="learn-card-eyebrow">{category?.label}</span>
+    <a
+      className={`learn-card${category ? ` cat-tint-${category.accent}` : ''}`}
+      href={`/learn/${article.slug}`}
+    >
+      <span className="learn-card-top">
+        {category?.icon && (
+          <span className="cat-badge cat-badge-sm" aria-hidden="true">
+            <svg className="icon">
+              <use href={`#${category.icon}`} />
+            </svg>
+          </span>
+        )}
+        <span className="learn-card-eyebrow">{category?.label}</span>
+      </span>
       <span className="learn-card-title">{article.h1}</span>
       <span className="learn-card-dek">{article.dek}</span>
       {article.readTime && <span className="learn-card-meta">{article.readTime}</span>}
@@ -69,7 +81,9 @@ export default function LearnLanding() {
         </div>
 
         <div className="learn-hero">
-          <h1 className="learn-h1">Health Insurance, Made Clear.</h1>
+          <h1 className="learn-h1">
+            Health Insurance, <span className="text-gradient">Made Clear.</span>
+          </h1>
           <p className="learn-hero-copy">
             Health coverage comes with a language of its own. Compass Health helps you understand
             your options, your benefits, and how your coverage actually works.
@@ -125,16 +139,31 @@ export default function LearnLanding() {
           </section>
         ) : (
           <>
-            {featured && (
-              <section className="learn-section">
-                <h2 className="learn-section-title">Featured</h2>
-                <a className="learn-featured-card" href={`/learn/${featured.slug}`}>
-                  <span className="learn-card-eyebrow">{getCategory(featured.category)?.label}</span>
-                  <span className="learn-featured-title">{featured.h1}</span>
-                  <span className="learn-card-dek">{featured.dek}</span>
-                </a>
-              </section>
-            )}
+            {featured && (() => {
+              const featuredCategory = getCategory(featured.category);
+              return (
+                <section className="learn-section">
+                  <h2 className="learn-section-title">Featured</h2>
+                  <a
+                    className={`learn-featured-card${featuredCategory ? ` cat-tint-${featuredCategory.accent}` : ''}`}
+                    href={`/learn/${featured.slug}`}
+                  >
+                    <span className="learn-card-top">
+                      {featuredCategory?.icon && (
+                        <span className="cat-badge cat-badge-sm" aria-hidden="true">
+                          <svg className="icon">
+                            <use href={`#${featuredCategory.icon}`} />
+                          </svg>
+                        </span>
+                      )}
+                      <span className="learn-card-eyebrow">{featuredCategory?.label}</span>
+                    </span>
+                    <span className="learn-featured-title">{featured.h1}</span>
+                    <span className="learn-card-dek">{featured.dek}</span>
+                  </a>
+                </section>
+              );
+            })()}
 
             {popular.length > 0 && (
               <section className="learn-section">
@@ -164,8 +193,17 @@ export default function LearnLanding() {
                 const articlesInCategory = ARTICLES.filter((a) => a.category === c.key);
                 if (!articlesInCategory.length) return null;
                 return (
-                  <div className="learn-category-block" key={c.key}>
-                    <h3 className="learn-category-heading">{c.label}</h3>
+                  <div className={`learn-category-block cat-tint-${c.accent}`} key={c.key}>
+                    <div className="learn-category-top">
+                      {c.icon && (
+                        <span className="cat-badge" aria-hidden="true">
+                          <svg className="icon">
+                            <use href={`#${c.icon}`} />
+                          </svg>
+                        </span>
+                      )}
+                      <h3 className="learn-category-heading">{c.label}</h3>
+                    </div>
                     <p className="learn-category-desc">{c.description}</p>
                     <div className="learn-grid">
                       {articlesInCategory.map((a) => (

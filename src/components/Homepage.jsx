@@ -13,16 +13,22 @@ const VALUE_PROPS = [
     title: 'Compare your options',
     body: 'Answer a few questions and see coverage paths that may fit your household, budget, and timing.',
     cta: { label: 'Check My Options', href: '/otp-landing' },
+    accent: 'teal',
+    icon: 'i-checkbig',
   },
   {
     title: 'Understand your benefits',
     body: 'Deductibles, copays, coinsurance, networks - the Education Center breaks down how coverage actually works.',
     cta: { label: 'Visit the Education Center', href: '/learn' },
+    accent: 'icy',
+    icon: 'i-doc',
   },
   {
     title: 'Talk to a licensed agent',
     body: 'When you’re ready, a licensed agent can walk through real plan options with you directly.',
     cta: { label: 'Get Help Navigating Your Coverage', href: '/otp-landing' },
+    accent: 'navy',
+    icon: 'i-people',
   },
 ];
 
@@ -82,7 +88,8 @@ export default function Homepage() {
       <section className="home-hero">
         <div className="wrap narrow home-hero-inner">
           <h1 className="home-hero-title">
-            Health insurance is complicated. Finding the right direction shouldn’t be.
+            Health insurance is complicated. Finding{' '}
+            <span className="text-gradient">the right direction</span> shouldn’t be.
           </h1>
           <p className="home-hero-copy">
             Compass Health helps individuals, families, self-employed professionals, and
@@ -102,7 +109,12 @@ export default function Homepage() {
       <section className="home-values">
         <div className="wrap home-values-grid">
           {VALUE_PROPS.map((v) => (
-            <div className="home-value-card" key={v.title}>
+            <div className={`home-value-card cat-tint-${v.accent}`} key={v.title}>
+              <span className="cat-badge" aria-hidden="true">
+                <svg className="icon">
+                  <use href={`#${v.icon}`} />
+                </svg>
+              </span>
               <h2>{v.title}</h2>
               <p>{v.body}</p>
               <a href={v.cta.href}>{v.cta.label} →</a>
@@ -119,13 +131,29 @@ export default function Homepage() {
               <a href="/learn">See all guides →</a>
             </div>
             <div className="learn-grid">
-              {featuredArticles.map((a) => (
-                <a className="learn-card" href={`/learn/${a.slug}`} key={a.slug}>
-                  <span className="learn-card-eyebrow">{getCategory(a.category)?.label}</span>
-                  <span className="learn-card-title">{a.h1}</span>
-                  <span className="learn-card-dek">{a.dek}</span>
-                </a>
-              ))}
+              {featuredArticles.map((a) => {
+                const category = getCategory(a.category);
+                return (
+                  <a
+                    className={`learn-card${category ? ` cat-tint-${category.accent}` : ''}`}
+                    href={`/learn/${a.slug}`}
+                    key={a.slug}
+                  >
+                    <span className="learn-card-top">
+                      {category?.icon && (
+                        <span className="cat-badge cat-badge-sm" aria-hidden="true">
+                          <svg className="icon">
+                            <use href={`#${category.icon}`} />
+                          </svg>
+                        </span>
+                      )}
+                      <span className="learn-card-eyebrow">{category?.label}</span>
+                    </span>
+                    <span className="learn-card-title">{a.h1}</span>
+                    <span className="learn-card-dek">{a.dek}</span>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </section>
