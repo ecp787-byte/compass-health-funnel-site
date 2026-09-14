@@ -113,7 +113,7 @@ export default function CoveragePathStepper() {
             <h3 className="coverage-path-q">Your next step</h3>
             <p className="coverage-path-result-copy">{nextStepCopy}</p>
             <div className="coverage-path-result-actions">
-              <a className="btn btn-primary" href="/otp-landing">
+              <a className="btn btn-primary" href="/otp-landing?start=1">
                 See My Options →
               </a>
               <button type="button" className="coverage-path-restart" onClick={reset}>

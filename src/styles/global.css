@@ -306,7 +306,7 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .home-hero-copy-col{max-width:600px;}
 .home-hero-title{
   font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;
-  font-size:clamp(34px,7vw,60px);line-height:1.04;margin-bottom:24px;
+  font-size:clamp(30px,7vw,60px);line-height:1.04;margin-bottom:24px;
 }
 .home-hero-title .hero-line-muted{display:block;color:var(--text-muted);font-weight:600;}
 .home-hero-title .hero-line-emph{display:block;color:var(--text);}
@@ -320,6 +320,18 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .home-hero-visual-col{display:flex;justify-content:center;}
 .hero-compass{width:100%;max-width:340px;margin-inline:auto;}
 .hero-compass-svg{width:100%;height:auto;display:block;}
+
+/* The compass sits beside the headline as soon as there's reasonably room
+   for a second column - waiting for a full desktop breakpoint left it
+   demoted below the copy on tablets and narrower laptop windows, which read
+   as an unstyled mobile stack rather than the intended asymmetric layout. */
+@media (min-width:600px){
+  .home-hero .wrap{grid-template-columns:1fr minmax(160px,220px);gap:28px;align-items:start;}
+  .home-hero-copy-col{max-width:none;}
+  .home-hero-title{font-size:clamp(28px,5vw,44px);}
+  .home-hero-visual-col{justify-content:flex-end;padding-top:4px;}
+  .hero-compass{max-width:100%;}
+}
 
 /* The interactive wayfinding widget, a full-width band directly below the
    hero rather than crowding it. */

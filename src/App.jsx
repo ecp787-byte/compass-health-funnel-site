@@ -31,11 +31,27 @@ const LEGAL_PAGES = {
 const FUNNEL_PATH = '/otp-landing';
 const LEARN_PREFIX = '/learn';
 
+// Internal CTAs (homepage, Education Center, the Coverage Path widget) link
+// here with ?start=1 - the visitor already got the pitch and the "Check My
+// Options" framing on the page they came from, so re-showing the ad-landing
+// intro (LandingHero) would just be a second copy of the same page asking
+// them to click "Check My Options" again. Cold paid-ad traffic still lands
+// on plain /otp-landing (no query param) and sees LandingHero first, since
+// that page carries the required ad-landing disclaimers/trust copy for
+// visitors with no other site context.
+function shouldSkipLandingIntro() {
+  if (typeof window === 'undefined') return false;
+  return new URLSearchParams(window.location.search).get('start') === '1';
+}
+
 function FunnelApp() {
   // If there's saved in-progress quiz state (e.g. the person switched to
   // their messages app to read an OTP code and came back), resume straight
   // into the quiz instead of dropping them back on the landing page.
-  const [stage, setStage] = useState(() => (loadProgress() ? 'quiz' : 'landing'));
+  const [stage, setStage] = useState(() => {
+    if (loadProgress()) return 'quiz';
+    return shouldSkipLandingIntro() ? 'quiz' : 'landing';
+  });
   const [finalAnswers, setFinalAnswers] = useState(null);
 
   return (

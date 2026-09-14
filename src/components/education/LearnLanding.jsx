@@ -223,7 +223,7 @@ export default function LearnLanding() {
             Once you understand how your coverage works, comparing plans is a lot less
             overwhelming.
           </p>
-          <a className="btn btn-primary article-cta-btn" href="/otp-landing">
+          <a className="btn btn-primary article-cta-btn" href="/otp-landing?start=1">
             Find Your Coverage
           </a>
         </section>

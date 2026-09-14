@@ -15,7 +15,7 @@ const VALUE_PROPS = [
   {
     title: 'Compare your options',
     body: 'Answer a few questions and see coverage paths that may fit your household, budget, and timing.',
-    cta: { label: 'Check My Options', href: '/otp-landing' },
+    cta: { label: 'Check My Options', href: '/otp-landing?start=1' },
     accent: 'teal',
     icon: 'i-checkbig',
   },
@@ -29,7 +29,7 @@ const VALUE_PROPS = [
   {
     title: 'Talk to a licensed agent',
     body: 'When you’re ready, a licensed agent can walk through real plan options with you directly.',
-    cta: { label: 'Get Help Navigating Your Coverage', href: '/otp-landing' },
+    cta: { label: 'Get Help Navigating Your Coverage', href: '/otp-landing?start=1' },
     accent: 'navy',
     icon: 'i-people',
   },
@@ -106,7 +106,7 @@ export default function Homepage() {
           </a>
           <nav className="home-nav" aria-label="Primary">
             <a href="/learn">Learn</a>
-            <a className="btn btn-primary home-nav-cta" href="/otp-landing">
+            <a className="btn btn-primary home-nav-cta" href="/otp-landing?start=1">
               Check My Options
             </a>
           </nav>
@@ -145,7 +145,7 @@ export default function Homepage() {
 
             <FadeUp mode="load" delay={0.72}>
               <div className="home-hero-actions">
-                <a className="btn btn-primary" href="/otp-landing">
+                <a className="btn btn-primary" href="/otp-landing?start=1">
                   Check My Options <span className="cta-arrow">→</span>
                 </a>
                 <a className="btn btn-ghost" href="/learn">
