@@ -15,7 +15,16 @@ input,select{font-family:inherit;font-size:16px;}
   *{animation-duration:0.001ms !important;transition-duration:0.001ms !important;}
 }
 
-.wrap{max-width:1280px;margin-inline:auto;padding-inline:max(20px, calc((100vw - 1280px)/2 + 20px));}
+/* max-width + margin-inline:auto already caps and centers this box, so its
+   side padding only needs to be a fixed gutter - not a second, viewport-wide
+   centering calc stacked on top. The old formula sized padding as if `.wrap`
+   itself spanned 100vw (it doesn't, it's already capped at 1280px), so on
+   any screen wider than ~1280px it double-counted the "excess" width and ate
+   deep into the box's own content area - at a 1720px window it left only
+   ~800px of the intended 1280px usable, and shrank far worse anywhere this
+   class combined with a narrower max-width (e.g. the Coverage Path card),
+   which is what produced the crushed hero headline and the clipped widget. */
+.wrap{max-width:1280px;margin-inline:auto;padding-inline:20px;}
 .narrow{max-width:640px;margin-inline:auto;}
 
 .sample-tag{
@@ -307,6 +316,10 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .home-hero-title{
   font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;
   font-size:clamp(30px,7vw,60px);line-height:1.04;margin-bottom:24px;
+  /* Each line here is already an explicit, hand-authored entry in the
+     TextReveal `lines` array - the browser's automatic balance-wrapping
+     (inherited from the sitewide h1 rule) shouldn't also rebalance them. */
+  text-wrap:normal;
 }
 .home-hero-title .hero-line-muted{display:block;color:var(--text-muted);font-weight:600;}
 .home-hero-title .hero-line-emph{display:block;color:var(--text);}
