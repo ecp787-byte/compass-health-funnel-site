@@ -2,7 +2,7 @@ export default {
   slug: 'what-is-a-health-insurance-deductible',
   category: 'benefits',
   seo: {
-    title: 'What Is a Health Insurance Deductible? | Compass Health',
+    title: 'What Is a Health Insurance Deductible? | Atlas Health',
     metaDescription:
       'A health insurance deductible is what you pay before your plan starts sharing costs — but not everything waits for it. Here’s how deductibles actually work.',
     primaryKeyword: 'health insurance deductible',

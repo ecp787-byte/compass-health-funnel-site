@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import CompassMark from './CompassMark.jsx';
+import AtlasMark from './AtlasMark.jsx';
 import ComplianceFooter from './ComplianceFooter.jsx';
-import HeroCompass from './HeroCompass.jsx';
+import HeroPeak from './HeroPeak.jsx';
 import CoveragePathStepper from './CoveragePathStepper.jsx';
 import { FadeUp, SectionReveal, StaggerContainer, StaggerItem, TextReveal } from '../motion/primitives.jsx';
 import { ARTICLES_BY_SLUG, POPULAR_SLUGS, getCategory } from '../data/education/index.js';
@@ -60,7 +60,7 @@ export default function Homepage() {
   useEffect(() => {
     const prevTitle = document.title;
     const prevDescription = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? null;
-    document.title = 'Compass Health, a Veritas Company | Modern Health Coverage Guidance';
+    document.title = 'Atlas Health, a Veritas Company | Modern Health Coverage Guidance';
 
     let metaTag = document.querySelector('meta[name="description"]');
     let createdMeta = false;
@@ -72,7 +72,7 @@ export default function Homepage() {
     }
     metaTag.setAttribute(
       'content',
-      'Compass Health helps individuals, families, and businesses understand their healthcare options and find coverage that fits - plus a free Education Center covering deductibles, copays, HSAs, and the marketplace.'
+      'Atlas Health helps individuals, families, and businesses understand their healthcare options and find coverage that fits - plus a free Education Center covering deductibles, copays, HSAs, and the marketplace.'
     );
 
     return () => {
@@ -98,16 +98,16 @@ export default function Homepage() {
       <header className={`home-header${scrolled ? ' is-scrolled' : ''}`}>
         <div className="wrap home-header-inner">
           <a href="/" className="home-brand">
-            <CompassMark />
+            <AtlasMark onDark={!scrolled} />
             <span>
-              <span className="brand-word">COMPASS HEALTH</span>
+              <span className="brand-word">ATLAS HEALTH</span>
               <span className="brand-sub">A VERITAS COMPANY</span>
             </span>
           </a>
           <nav className="home-nav" aria-label="Primary">
-            <a href="/learn">Learn</a>
-            <a className="btn btn-primary home-nav-cta" href="/otp-landing?start=1">
-              Check My Options
+            <a href="/learn">Resources</a>
+            <a className="btn btn-primary home-nav-cta home-nav-pill" href="/otp-landing?start=1">
+              Get Started
             </a>
           </nav>
         </div>
@@ -117,7 +117,7 @@ export default function Homepage() {
         <div className="wrap">
           <div className="home-hero-copy-col">
             <FadeUp mode="load" delay={0.05}>
-              <span className="home-hero-eyebrow section-label">Coverage, navigated</span>
+              <span className="home-hero-eyebrow section-label">Coverage, guided</span>
             </FadeUp>
 
             <TextReveal
@@ -130,15 +130,15 @@ export default function Homepage() {
                 <span className="hero-line-muted">Health insurance</span>,
                 <span className="hero-line-muted">is complicated.</span>,
                 <span className="hero-line-emph">
-                  Finding the <span className="text-gradient">right direction</span>
+                  Coverage for <span className="text-gradient">what’s next</span>
                 </span>,
-                <span className="hero-line-emph">shouldn’t be.</span>,
+                <span className="hero-line-emph">starts here.</span>,
               ]}
             />
 
             <FadeUp mode="load" delay={0.62}>
               <p className="home-hero-copy">
-                Compass Health helps individuals, families, self-employed professionals, and
+                Atlas Health helps individuals, families, self-employed professionals, and
                 businesses understand their healthcare options and find coverage that fits.
               </p>
             </FadeUp>
@@ -156,7 +156,7 @@ export default function Homepage() {
           </div>
 
           <FadeUp mode="load" delay={0.3} y={0} className="home-hero-visual-col">
-            <HeroCompass />
+            <HeroPeak />
           </FadeUp>
         </div>
       </section>
@@ -170,8 +170,8 @@ export default function Homepage() {
       <section className="home-waypoints">
         <div className="wrap">
           <SectionReveal className="home-waypoints-head">
-            <span className="section-label">How Compass Health helps</span>
-            <h2 className="home-waypoints-title">Three ways we point you in the right direction.</h2>
+            <span className="section-label">How Atlas Health helps</span>
+            <h2 className="home-waypoints-title">Three ways we help you move forward.</h2>
           </SectionReveal>
 
           <StaggerContainer className="home-waypoints-list">

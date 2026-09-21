@@ -2,7 +2,7 @@ export default {
   slug: 'what-is-maximum-out-of-pocket',
   category: 'benefits',
   seo: {
-    title: 'What Does Maximum Out-of-Pocket Mean? | Compass Health',
+    title: 'What Does Maximum Out-of-Pocket Mean? | Atlas Health',
     metaDescription:
       'Maximum out-of-pocket is the most you’d pay for covered, in-network care in a plan year. See what counts, what doesn’t, and a hypothetical example.',
     primaryKeyword: 'maximum out-of-pocket',
@@ -88,7 +88,7 @@ export default {
     {
       type: 'p',
       text:
-        'The numbers below are entirely hypothetical, for illustration only, and do not represent any real Compass Health plan or carrier. Suppose a hypothetical plan has a $2,500 deductible, 20% coinsurance after the deductible, and a $9,000 out-of-pocket maximum for individual coverage. Now suppose the plan’s enrollee has an unplanned hospitalization partway through the year.',
+        'The numbers below are entirely hypothetical, for illustration only, and do not represent any real Atlas Health plan or carrier. Suppose a hypothetical plan has a $2,500 deductible, 20% coinsurance after the deductible, and a $9,000 out-of-pocket maximum for individual coverage. Now suppose the plan’s enrollee has an unplanned hospitalization partway through the year.',
     },
     {
       type: 'example',

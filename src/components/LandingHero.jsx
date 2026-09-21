@@ -4,7 +4,7 @@
 // trust bullets and the explicit prohibitions (no government branding, no
 // Medicare imagery, no fake countdowns/scarcity, no "everyone qualifies"
 // language, no unsubstantiated savings figures).
-import CompassMark from './CompassMark.jsx';
+import AtlasMark from './AtlasMark.jsx';
 
 const TRUST_BULLETS = [
   'Takes about 2 minutes',
@@ -19,9 +19,9 @@ export default function LandingHero({ onStart }) {
   return (
     <div className="landing">
       <div className="landing-brand">
-        <CompassMark />
+        <AtlasMark />
         <span>
-          <span className="brand-word">COMPASS HEALTH</span>
+          <span className="brand-word">ATLAS HEALTH</span>
           <span className="brand-sub">A VERITAS COMPANY</span>
         </span>
       </div>
@@ -53,8 +53,8 @@ export default function LandingHero({ onStart }) {
       </div>
 
       <p className="landing-footnote">
-        Compass Health, a Veritas company, connects you with licensed insurance agents
-        contracted with Veritas Insurance Solutions. Compass Health does not sell insurance
+        Atlas Health, a Veritas company, connects you with licensed insurance agents
+        contracted with Veritas Insurance Solutions. Atlas Health does not sell insurance
         directly and is not affiliated with or endorsed by any government agency, including the
         federal Health Insurance Marketplace or Medicare.
       </p>

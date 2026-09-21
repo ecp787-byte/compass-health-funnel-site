@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import CompassMark from '../CompassMark.jsx';
+import AtlasMark from '../AtlasMark.jsx';
 import ComplianceFooter from '../ComplianceFooter.jsx';
 import {
   ARTICLES,
@@ -41,7 +41,7 @@ export default function LearnLanding() {
 
   useEffect(() => {
     const prevTitle = document.title;
-    document.title = 'Health Insurance, Made Clear. | Compass Health Learn';
+    document.title = 'Health Insurance, Made Clear. | Atlas Health Learn';
     return () => {
       document.title = prevTitle;
     };
@@ -72,9 +72,9 @@ export default function LearnLanding() {
       <div className="wrap">
         <div className="landing-brand legal-brand">
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}>
-            <CompassMark />
+            <AtlasMark />
             <span>
-              <span className="brand-word">COMPASS HEALTH</span>
+              <span className="brand-word">ATLAS HEALTH</span>
               <span className="brand-sub">A VERITAS COMPANY</span>
             </span>
           </a>
@@ -85,7 +85,7 @@ export default function LearnLanding() {
             Health Insurance, <span className="text-gradient">Made Clear.</span>
           </h1>
           <p className="learn-hero-copy">
-            Health coverage comes with a language of its own. Compass Health helps you understand
+            Health coverage comes with a language of its own. Atlas Health helps you understand
             your options, your benefits, and how your coverage actually works.
           </p>
           <input

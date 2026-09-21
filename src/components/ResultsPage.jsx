@@ -5,6 +5,9 @@ import { getEligibilityRoute } from '../lib/leadRouting.js';
 import { isDuringBusinessHours } from '../lib/businessHours.js';
 import { trackEvent, EVENTS } from '../lib/tracking.js';
 import { submitLead } from '../lib/api.js';
+import { AGENT_PHONE_TEL, AGENT_PHONE_DISPLAY } from '../data/legalContent.js';
+import { CONSENT_COPY } from './quiz/StepConsent.jsx';
+import { getTrustedFormCertUrl } from '../lib/trustedForm.js';
 
 const COVERAGE_START_LABELS = {
   asap: 'As soon as possible',
@@ -64,6 +67,8 @@ export default function ResultsPage({ answers, attribution }) {
       leadTier: tier,
       routing: routing.route,
       attribution,
+      tcpaText: CONSENT_COPY.text,
+      trustedFormCertUrl: getTrustedFormCertUrl(),
       submittedAt: new Date().toISOString(),
     });
     trackEvent(EVENTS.QUALIFIED_LEAD, { tier });
@@ -103,8 +108,8 @@ export default function ResultsPage({ answers, attribution }) {
       </div>
 
       {duringHours ? (
-        <a className="btn btn-primary btn-block results-cta" href="tel:+18005551234">
-          Speak With an Agent Now
+        <a className="btn btn-primary btn-block results-cta" href={AGENT_PHONE_TEL}>
+          Speak With an Agent Now — {AGENT_PHONE_DISPLAY}
         </a>
       ) : (
         <div className="results-schedule">
@@ -149,13 +154,13 @@ export default function ResultsPage({ answers, attribution }) {
         </div>
       )}
 
-      <a className="btn btn-ghost btn-block results-secondary" href="tel:+18005551234">
-        Speak With a Licensed Agent
+      <a className="btn btn-ghost btn-block results-secondary" href={AGENT_PHONE_TEL}>
+        Speak With a Licensed Agent — {AGENT_PHONE_DISPLAY}
       </a>
 
-      <p className="results-footnote sample-tag">
-        Sample results page — no plan recommendations or pricing are shown here; an agent reviews
-        real, current plan options with you directly.
+      <p className="results-footnote">
+        No plan recommendations or pricing are shown here; a licensed agent reviews real, current
+        plan options with you directly.
       </p>
     </div>
   );

@@ -1,7 +1,7 @@
-# Compass Health Coverage Assessment Funnel
+# Atlas Health Coverage Assessment Funnel
 
 A mobile-first, one-question-per-screen health-insurance lead-generation
-funnel for Compass Health, a Veritas company: minimal landing page → quiz →
+funnel for Atlas Health, a Veritas company: minimal landing page → quiz →
 OTP-verified contact capture → results/next-step page. Full design rationale,
 question flow, conditional logic, scoring model, data schema, CRM mapping,
 tracking architecture, and a compliance/UX review live in

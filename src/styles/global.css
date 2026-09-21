@@ -27,12 +27,6 @@ input,select{font-family:inherit;font-size:16px;}
 .wrap{max-width:1280px;margin-inline:auto;padding-inline:20px;}
 .narrow{max-width:640px;margin-inline:auto;}
 
-.sample-tag{
-  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--text-muted);background:var(--surface);border:1px solid var(--line);border-radius:100px;
-  padding:3px 9px;margin-left:0;vertical-align:middle;
-}
-
 .icon{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;}
 
 .text-gradient{background:var(--btn-gradient);-webkit-background-clip:text;background-clip:text;color:transparent;}
@@ -43,16 +37,16 @@ input,select{font-family:inherit;font-size:16px;}
    the DOM (eyebrows, badges, card washes), so a category keeps the same
    color everywhere it shows up without repeating rules per component. */
 .cat-tint-teal{--tint-grad:linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);--tint-fg:var(--accent);--tint-soft:var(--accent-soft);}
-.cat-tint-icy{--tint-grad:linear-gradient(135deg, var(--accent-2) 0%, var(--accent-4) 100%);--tint-fg:#12586a;--tint-soft:var(--accent-2-soft);}
+.cat-tint-icy{--tint-grad:linear-gradient(135deg, var(--accent-2) 0%, var(--accent-4) 100%);--tint-fg:#6b5a3a;--tint-soft:var(--accent-2-soft);}
 .cat-tint-navy{--tint-grad:linear-gradient(135deg, var(--accent-3) 0%, var(--accent) 100%);--tint-fg:var(--accent-3);--tint-soft:var(--accent-3-soft);}
-.cat-tint-ice{--tint-grad:linear-gradient(135deg, var(--accent-4) 0%, var(--accent-2) 100%);--tint-fg:#146276;--tint-soft:var(--accent-4-soft);}
-.cat-tint-deep{--tint-grad:linear-gradient(135deg, var(--btn-bg) 0%, var(--accent-3) 100%);--tint-fg:var(--btn-bg);--tint-soft:rgba(12,44,71,0.08);}
+.cat-tint-ice{--tint-grad:linear-gradient(135deg, var(--accent-4) 0%, var(--accent-2) 100%);--tint-fg:#4a5a45;--tint-soft:var(--accent-4-soft);}
+.cat-tint-deep{--tint-grad:linear-gradient(135deg, var(--btn-bg) 0%, var(--accent-3) 100%);--tint-fg:var(--btn-bg);--tint-soft:rgba(11,11,11,0.08);}
 .cat-tint-duo{--tint-grad:linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 45%, var(--accent-3) 100%);--tint-fg:var(--accent);--tint-soft:var(--accent-soft);}
 
 .cat-badge{
   display:inline-flex;align-items:center;justify-content:center;flex:none;
   width:40px;height:40px;border-radius:12px;background:var(--tint-grad, var(--btn-gradient));
-  box-shadow:0 8px 16px -8px rgba(12,44,71,0.4);
+  box-shadow:0 8px 16px -8px rgba(11,11,11,0.4);
 }
 .cat-badge .icon{width:20px;height:20px;stroke:#fff;}
 .cat-badge-sm{width:26px;height:26px;border-radius:8px;box-shadow:none;}
@@ -68,14 +62,14 @@ input,select{font-family:inherit;font-size:16px;}
 }
 .btn:active{filter:brightness(0.94);transform:translateY(0);}
 .btn-primary{background:var(--btn-gradient);color:var(--btn-fg);box-shadow:var(--btn-shadow);}
-.btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 16px 32px -10px rgba(12,44,71,0.55);}
-.btn-primary:active{transform:translateY(0);box-shadow:0 8px 18px -8px rgba(12,44,71,0.45);}
+.btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 16px 32px -10px rgba(11,11,11,0.55);}
+.btn-primary:active{transform:translateY(0);box-shadow:0 8px 18px -8px rgba(11,11,11,0.45);}
 .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong);}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
 .btn-block{width:100%;}
 .btn[disabled]{opacity:0.4;cursor:not-allowed;box-shadow:none;transform:none;}
 
-.brand-mark{width:28px;height:28px;flex:none;display:block;filter:drop-shadow(0 2px 6px rgba(12,44,71,0.3));}
+.brand-mark{width:28px;height:28px;flex:none;display:block;filter:drop-shadow(0 2px 6px rgba(11,11,11,0.3));}
 .brand-word{display:block;font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:0.04em;}
 .brand-sub{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.14em;color:var(--text-muted);margin-top:2px;}
 
@@ -94,10 +88,10 @@ input,select{font-family:inherit;font-size:16px;}
 .landing-cta{margin-top:30px;font-size:16.5px;}
 .landing-chips{margin-top:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
 .landing-chips li{font-size:12px;font-weight:700;padding:7px 13px;border-radius:999px;background:var(--accent-soft);color:var(--accent);}
-.landing-chips li:nth-child(5n+2){background:var(--accent-2-soft);color:#12586a;}
+.landing-chips li:nth-child(5n+2){background:var(--accent-2-soft);color:#6b5a3a;}
 .landing-chips li:nth-child(5n+3){background:var(--accent-3-soft);color:var(--accent-3);}
-.landing-chips li:nth-child(5n+4){background:var(--accent-4-soft);color:#146276;}
-.landing-chips li:nth-child(5n+5){background:rgba(12,44,71,0.08);color:var(--btn-bg);}
+.landing-chips li:nth-child(5n+4){background:var(--accent-4-soft);color:#4a5a45;}
+.landing-chips li:nth-child(5n+5){background:rgba(11,11,11,0.08);color:var(--btn-bg);}
 .landing-trust{margin-top:26px;display:flex;flex-direction:column;gap:11px;}
 .landing-trust li{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--text-muted);}
 .landing-trust-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;}
@@ -221,7 +215,7 @@ input,select{font-family:inherit;font-size:16px;}
 .results-check{
   width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg, var(--accent), var(--accent-2));color:#fff;
   display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;
-  box-shadow:0 10px 24px -8px rgba(12,44,71,0.5);
+  box-shadow:0 10px 24px -8px rgba(11,11,11,0.5);
 }
 .results-title{font-family:var(--font-display);font-weight:800;font-size:clamp(24px,6vw,30px);line-height:1.2;letter-spacing:-0.01em;}
 .results-subtitle{margin-top:10px;font-size:15px;color:var(--text-muted);line-height:1.6;}
@@ -255,16 +249,23 @@ input,select{font-family:inherit;font-size:16px;}
 .legal-section p:last-child{margin-bottom:0;}
 
 /* ============================================================================
-   COMPLIANCE FOOTER (shared by landing + results)
+   SITE FOOTER (Homepage, Learn, legal pages) — dark Obsidian band carrying
+   the full brand lockup + tagline, with the compliance copy nested inside.
    ========================================================================== */
-.compliance-footer{
-  max-width:600px;margin-inline:auto;padding:20px 20px calc(28px + env(safe-area-inset-bottom));
-  border-top:1px solid var(--line);
+.site-footer{background:var(--obsidian);color:var(--on-dark);margin-top:0;}
+.site-footer-inner{padding:48px 20px calc(28px + env(safe-area-inset-bottom));}
+.site-footer-brand{display:flex;align-items:center;gap:10px;}
+.site-footer-brand .brand-sub{color:var(--on-dark-muted);}
+.site-footer-tagline{
+  margin-top:18px;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--accent-2);
 }
-.compliance-footer p{font-size:11px;line-height:1.7;color:var(--text-muted);margin-top:10px;}
+
+.compliance-footer{padding-top:20px;margin-top:20px;border-top:1px solid var(--on-dark-line);}
+.compliance-footer p{font-size:11px;line-height:1.7;color:var(--on-dark-muted);margin-top:10px;}
 .compliance-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:11.5px;font-weight:600;}
-.compliance-links a{text-decoration:underline;color:var(--text-muted);}
-.copyright{margin-top:12px;font-size:11px;color:var(--text-muted);}
+.compliance-links a{text-decoration:underline;color:var(--on-dark-muted);}
+.copyright{margin-top:12px;font-size:11px;color:var(--on-dark-muted);}
 
 /* ============================================================================
    HOMEPAGE (src/components/Homepage.jsx) — the real compasscares.co front
@@ -280,39 +281,52 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .section-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);}
 .section-label::before{content:'';width:26px;height:1px;background:var(--accent);flex:none;}
 
-/* Sticky header - transparent at the top of the page, gains a blurred
-   surface and hairline shadow once the page has scrolled, via .is-scrolled
-   toggled in JS. */
+/* Sticky header - sits transparent over the dark hero at the top of the
+   page (light text, since the hero behind it is Obsidian), then gains a
+   blurred light surface and dark text once the page has scrolled past the
+   hero, via .is-scrolled toggled in JS. */
 .home-header{
-  position:sticky;top:0;z-index:40;background:rgba(246,247,245,0.6);
+  position:sticky;top:0;z-index:40;background:rgba(11,11,11,0.22);color:var(--on-dark);
   border-bottom:1px solid transparent;
-  transition:background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease, border-color .25s ease;
+  transition:background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease;
 }
 .home-header.is-scrolled{
   background:rgba(255,255,255,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-color:var(--line);box-shadow:0 16px 32px -26px rgba(12,44,71,0.35);
+  border-color:var(--line);box-shadow:0 16px 32px -26px rgba(11,11,11,0.35);color:var(--text);
 }
 .home-header-inner{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:16px;}
 .home-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;}
+.home-brand .brand-sub{color:var(--on-dark-muted);}
+.home-header.is-scrolled .home-brand .brand-sub{color:var(--text-muted);}
 .home-nav{display:flex;align-items:center;gap:26px;}
 .home-nav a:not(.btn){
-  position:relative;font-size:14px;font-weight:600;text-decoration:none;color:var(--text);padding-bottom:3px;
+  position:relative;font-size:14px;font-weight:600;text-decoration:none;color:inherit;padding-bottom:3px;
 }
 .home-nav a:not(.btn)::after{
-  content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent);
+  content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent-2);
   transition:right .3s cubic-bezier(0.22,1,0.36,1);
 }
+.home-header.is-scrolled .home-nav a:not(.btn)::after{background:var(--accent);}
 .home-nav a:not(.btn):hover::after{right:0;}
-.home-nav a:hover{color:var(--accent);}
+.home-nav a:hover{color:var(--accent-2);}
+.home-header.is-scrolled .home-nav a:hover{color:var(--accent);}
 .home-nav-cta{padding:11px 20px;min-height:auto;font-size:14px;}
+.home-nav-pill{border-radius:999px;}
 
 /* Hero - asymmetric two-column composition: editorial, left-aligned
-   headline with mixed weight/scale on the left; the animated compass mark
-   and its orbit/waypoints on the right. Single column on mobile with the
-   compass demoted below the copy. */
-.home-hero{position:relative;overflow:hidden;padding-block:64px 56px;border-bottom:1px solid var(--line);}
+   headline with mixed weight/scale on the left; the animated sunrise-over-
+   mountains graphic on the right. Dark Obsidian surface, matching the
+   brand kit's dark hero mockup - the one place the mountain mood is shown
+   at full strength. Single column on mobile with the graphic demoted
+   below the copy. */
+.home-hero{
+  position:relative;overflow:hidden;padding-block:64px 56px;
+  background:var(--obsidian);
+}
 .home-hero .wrap{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
 .home-hero-copy-col{max-width:600px;}
+.home-hero-eyebrow{color:var(--on-dark-muted);}
+.home-hero-eyebrow::before{background:var(--accent-2);}
 .home-hero-title{
   font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;
   font-size:clamp(30px,7vw,60px);line-height:1.04;margin-bottom:24px;
@@ -321,29 +335,32 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
      (inherited from the sitewide h1 rule) shouldn't also rebalance them. */
   text-wrap:normal;
 }
-.home-hero-title .hero-line-muted{display:block;color:var(--text-muted);font-weight:600;}
-.home-hero-title .hero-line-emph{display:block;color:var(--text);}
+.home-hero-title .hero-line-muted{display:block;color:var(--on-dark-muted);font-weight:600;}
+.home-hero-title .hero-line-emph{display:block;color:var(--on-dark);}
 .home-hero-title .text-gradient{display:inline;}
-.home-hero-copy{font-size:17.5px;line-height:1.65;color:var(--text-muted);max-width:480px;margin-bottom:34px;}
+.home-hero-copy{font-size:17.5px;line-height:1.65;color:var(--on-dark-muted);max-width:480px;margin-bottom:34px;}
 .home-hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong);}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+.home-hero .btn-ghost{color:var(--on-dark);border-color:var(--on-dark-line);}
+.home-hero .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
 .btn-primary:hover{transform:translateY(-2px);}
 
 .home-hero-visual-col{display:flex;justify-content:center;}
-.hero-compass{width:100%;max-width:340px;margin-inline:auto;}
-.hero-compass-svg{width:100%;height:auto;display:block;}
+.hero-peak{width:100%;max-width:340px;margin-inline:auto;}
+.hero-peak-svg{width:100%;height:auto;display:block;}
 
-/* The compass sits beside the headline as soon as there's reasonably room
-   for a second column - waiting for a full desktop breakpoint left it
-   demoted below the copy on tablets and narrower laptop windows, which read
-   as an unstyled mobile stack rather than the intended asymmetric layout. */
+/* The mountain graphic sits beside the headline as soon as there's
+   reasonably room for a second column - waiting for a full desktop
+   breakpoint left it demoted below the copy on tablets and narrower
+   laptop windows, which read as an unstyled mobile stack rather than the
+   intended asymmetric layout. */
 @media (min-width:600px){
   .home-hero .wrap{grid-template-columns:1fr minmax(160px,220px);gap:28px;align-items:start;}
   .home-hero-copy-col{max-width:none;}
   .home-hero-title{font-size:clamp(28px,5vw,44px);}
   .home-hero-visual-col{justify-content:flex-end;padding-top:4px;}
-  .hero-compass{max-width:100%;}
+  .hero-peak{max-width:100%;}
 }
 
 /* The interactive wayfinding widget, a full-width band directly below the
@@ -355,7 +372,7 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .home-coverage-path-inner{max-width:580px;margin-inline:auto;}
 .coverage-path{
   position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-l);
-  padding:30px 26px 32px;box-shadow:0 28px 56px -34px rgba(12,44,71,0.32);overflow:hidden;
+  padding:30px 26px 32px;box-shadow:0 28px 56px -34px rgba(11,11,11,0.32);overflow:hidden;
 }
 .coverage-path-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;}
 .coverage-path-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);}
@@ -575,7 +592,7 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 
   .home-hero{padding-block:64px 88px;}
   .home-hero .wrap{grid-template-columns:1.05fr 0.95fr;gap:40px;}
-  .hero-compass{max-width:100%;}
+  .hero-peak{max-width:100%;}
   .home-waypoint{grid-template-columns:64px 1fr;column-gap:32px;padding-block:36px;}
   .home-waypoints-list::before{left:31px;}
 }

@@ -1,6 +1,5 @@
-import CompassMark from './CompassMark.jsx';
+import AtlasMark from './AtlasMark.jsx';
 import ComplianceFooter from './ComplianceFooter.jsx';
-import { LEGAL_REVIEW_NOTICE } from '../data/legalContent.js';
 
 // Generic renderer for the legal/compliance pages (Privacy, Terms) - see
 // src/data/legalContent.js for the actual copy. Keeping
@@ -11,21 +10,19 @@ export default function LegalPage({ content }) {
     <div className="legal-page">
       <div className="wrap narrow">
         <a className="legal-back" href="/">
-          ← Back to Compass Health
+          ← Back to Atlas Health
         </a>
 
         <div className="landing-brand legal-brand">
-          <CompassMark />
+          <AtlasMark />
           <span>
-            <span className="brand-word">COMPASS HEALTH</span>
+            <span className="brand-word">ATLAS HEALTH</span>
             <span className="brand-sub">A VERITAS COMPANY</span>
           </span>
         </div>
 
         <h1 className="legal-title">{content.title}</h1>
         <p className="legal-effective">Effective date: {content.effectiveDate}</p>
-
-        <p className="sample-tag legal-notice">{LEGAL_REVIEW_NOTICE}</p>
 
         {content.intro && <p className="legal-intro">{content.intro}</p>}
 

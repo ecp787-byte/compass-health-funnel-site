@@ -1,4 +1,4 @@
-# Compass Health Coverage Assessment — Funnel Architecture
+# Atlas Health Coverage Assessment — Funnel Architecture
 
 This document describes the lead-generation funnel built in this repository: a
 mobile-first, one-question-per-screen coverage assessment for private health
@@ -230,7 +230,7 @@ parameters, never logged to the console in production.
 - Consent checkbox is unchecked by default and the Submit button is disabled
   until it's checked — no pre-checked box, per requirement.
 - Full TCPA-style consent text is visible inline (not hidden behind a
-  tooltip/modal), stating that Compass Health and its agents may call/text using an
+  tooltip/modal), stating that Atlas Health and its agents may call/text using an
   autodialer/prerecorded voice, that consent isn't a condition of purchase,
   and that STOP opts out.
 - Links to Privacy Policy / Terms & Conditions / Licensing & Disclosures are

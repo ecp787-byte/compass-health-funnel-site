@@ -308,7 +308,7 @@ export default {
   ],
   cta: { label: 'Understand Your Options', href: '/otp-landing' },
   image: {
-    suggestion: 'A clean, modern flat-lay or infographic-style graphic showing an insurance card, an EOB document, and a pharmacy label arranged together, in Compass Health\'s brand colors — evokes "the paperwork you actually need to understand."',
+    suggestion: 'A clean, modern flat-lay or infographic-style graphic showing an insurance card, an EOB document, and a pharmacy label arranged together, in Atlas Health\'s brand colors — evokes "the paperwork you actually need to understand."',
     alt: 'Health insurance card, Explanation of Benefits document, and prescription label representing common health insurance terms',
   },
   sources: [

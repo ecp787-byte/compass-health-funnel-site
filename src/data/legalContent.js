@@ -1,24 +1,25 @@
 // ============================================================================
-// LEGAL PAGE CONTENT — DRAFT / TEMPLATE ONLY
+// LEGAL PAGE CONTENT
 // ----------------------------------------------------------------------------
-// This is starting-point copy written to match what this funnel actually
-// does (the fields it collects, the OTP/consent flow, the CRM + Meta CAPI
-// integrations documented in ARCHITECTURE.md and server/README.md) so it
-// isn't generic boilerplate — but it is NOT a substitute for review by a
-// licensed attorney and your compliance team before this goes live with
-// real ad spend. Placeholders in [brackets] need real values (entity
-// details, state list, NPN, contact info, effective dates, arbitration/
-// governing-law choices, etc.) filled in during that review.
+// Written to match what this funnel actually does (the fields it collects,
+// the OTP/consent flow, the CRM + Meta CAPI integrations documented in
+// ARCHITECTURE.md and server/README.md). This is not a substitute for
+// periodic review by a licensed attorney and your compliance team as the
+// funnel, states served, or integrations change.
 // ============================================================================
 
-export const LEGAL_REVIEW_NOTICE =
-  'Draft template — has NOT been reviewed by an attorney. Replace all [bracketed] placeholders and have compliance/legal finalize this before publishing.';
+export const CONTACT_EMAIL = 'info@veritassolutions.io';
+
+// Used for the "Speak With an Agent" CTAs on the results page. Kept as a
+// single tel: value + a matching display string so the two never drift.
+export const AGENT_PHONE_TEL = 'tel:+13024055243';
+export const AGENT_PHONE_DISPLAY = '(302) 405-5243';
 
 export const PRIVACY_POLICY = {
   title: 'Privacy Policy',
-  effectiveDate: '[Effective date]',
+  effectiveDate: 'September 14, 2026',
   intro:
-    'This Privacy Policy explains how Compass Health, a Veritas company (“Compass Health,” ' +
+    'This Privacy Policy explains how Atlas Health, a Veritas company (“Atlas Health,” ' +
     '“we,” “us”) collects, uses, and shares information when you use this website and ' +
     'coverage-assessment tool (the “Service”).',
   sections: [
@@ -60,7 +61,7 @@ export const PRIVACY_POLICY = {
         'Advertising partners, in de-identified or hashed form where required, to measure ad ' +
           'performance and improve targeting.',
         'Regulators, law enforcement, or other parties when required by law, or to protect the ' +
-          'rights, safety, or property of Compass Health or others.',
+          'rights, safety, or property of Atlas Health or others.',
         'We do not sell your health-related quiz answers to unrelated third parties for their own ' +
           'independent marketing purposes.',
       ],
@@ -73,7 +74,7 @@ export const PRIVACY_POLICY = {
         'Calls: you can ask any agent who contacts you to add you to our internal do-not-call list.',
         'Access, correction, or deletion: depending on your state of residence, you may have the ' +
           'right to request access to, correction of, or deletion of your personal information. ' +
-          'Submit requests to [privacy contact email].',
+          `Submit requests to ${CONTACT_EMAIL}.`,
         'Cookies: most browsers let you block or delete cookies; doing so may affect how the ' +
           'Service functions.',
       ],
@@ -100,24 +101,24 @@ export const PRIVACY_POLICY = {
     },
     {
       heading: 'Contact Us',
-      body: 'Questions about this Privacy Policy can be sent to [privacy contact email / mailing address].',
+      body: `Questions about this Privacy Policy can be sent to ${CONTACT_EMAIL}.`,
     },
   ],
 };
 
 export const TERMS_CONDITIONS = {
   title: 'Terms & Conditions',
-  effectiveDate: '[Effective date]',
+  effectiveDate: 'September 14, 2026',
   intro:
     'These Terms & Conditions (“Terms”) govern your use of this website and coverage-' +
-    'assessment tool operated by Compass Health, a Veritas company. By using the Service, you ' +
+    'assessment tool operated by Atlas Health, a Veritas company. By using the Service, you ' +
     'agree to these Terms.',
   sections: [
     {
       heading: 'Who We Are',
       body:
-        'Compass Health, a Veritas company, is a lead-generation service that connects consumers ' +
-        'with licensed insurance agents contracted with Veritas Insurance Solutions. Compass ' +
+        'Atlas Health, a Veritas company, is a lead-generation service that connects consumers ' +
+        'with licensed insurance agents contracted with Veritas Insurance Solutions. Atlas ' +
         'Health does not sell insurance directly, is not an insurance carrier, is not itself a ' +
         'licensed insurance agency, and is not affiliated with or endorsed by any government ' +
         'agency (including the federal Health Insurance Marketplace or Medicare). We do not ' +
@@ -150,7 +151,7 @@ export const TERMS_CONDITIONS = {
     {
       heading: 'Intellectual Property',
       body:
-        'All content, branding, and trademarks on the Service are the property of Compass Health ' +
+        'All content, branding, and trademarks on the Service are the property of Atlas Health ' +
         'or its licensors and may not be used without permission.',
     },
     {
@@ -168,12 +169,12 @@ export const TERMS_CONDITIONS = {
     {
       heading: 'Limitation of Liability',
       body:
-        'To the fullest extent permitted by law, Compass Health will not be liable for any ' +
+        'To the fullest extent permitted by law, Atlas Health will not be liable for any ' +
         'indirect, incidental, or consequential damages arising from your use of the Service.',
     },
     {
       heading: 'Governing Law',
-      body: 'These Terms are governed by the laws of the State of [governing state], without regard to conflict-of-law principles.',
+      body: 'These Terms are governed by the laws of the State of Delaware, without regard to conflict-of-law principles.',
     },
     {
       heading: 'Changes to These Terms',
@@ -183,7 +184,7 @@ export const TERMS_CONDITIONS = {
     },
     {
       heading: 'Contact Us',
-      body: 'Questions about these Terms can be sent to [legal contact email / mailing address].',
+      body: `Questions about these Terms can be sent to ${CONTACT_EMAIL}.`,
     },
   ],
 };

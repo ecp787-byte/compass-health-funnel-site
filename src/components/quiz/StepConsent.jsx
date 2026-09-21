@@ -1,15 +1,16 @@
 // Clear, visible, NOT pre-checked TCPA-style consent, shown immediately
-// before final submission. The exact wording below is placeholder copy -
-// it must be reviewed and finalized by compliance/legal before this goes
-// live with real ad spend. Keep this component's only job "render whatever
+// before final submission. Keep this component's only job "render whatever
 // consent text + links are configured and report checked/unchecked state" -
 // the actual legal language should be editable without touching engine code
 // (swap CONSENT_COPY for values pulled from a CMS/config if that's easier
 // for legal to manage).
-const CONSENT_COPY = {
+// Exported so ResultsPage.jsx can send the exact text the visitor saw and
+// agreed to as tcpa_text when the lead is sold (Lead Prosper and other
+// buyers expect the literal consent language, not a paraphrase of it).
+export const CONSENT_COPY = {
   text:
-    'I agree Compass Health may share my information with licensed insurance agents contracted ' +
-    'with Veritas Insurance Solutions, and that Compass Health and those agents may contact me ' +
+    'I agree Atlas Health may share my information with licensed insurance agents contracted ' +
+    'with Veritas Insurance Solutions, and that Atlas Health and those agents may contact me ' +
     'by call, text, or email — including by autodialer or prerecorded voice — about health ' +
     'insurance options, even if I’m on a Do Not Call list. Consent isn’t required to get a ' +
     'quote. Msg & data rates may apply. Reply STOP to opt out.',
@@ -45,10 +46,6 @@ export default function StepConsent({ checked, onChange, summary }) {
           </a>
         ))}
       </div>
-
-      <p className="quiz-consent-footnote sample-tag">
-        Sample consent language — have compliance/legal review and finalize before publishing.
-      </p>
     </div>
   );
 }
