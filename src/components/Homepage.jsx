@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import AtlasMark from './AtlasMark.jsx';
 import ComplianceFooter from './ComplianceFooter.jsx';
-import HeroPeak from './HeroPeak.jsx';
 import CoveragePathStepper from './CoveragePathStepper.jsx';
 import { FadeUp, SectionReveal, StaggerContainer, StaggerItem, TextReveal } from '../motion/primitives.jsx';
 import { ARTICLES_BY_SLUG, POPULAR_SLUGS, getCategory } from '../data/education/index.js';
@@ -154,10 +153,6 @@ export default function Homepage() {
               </div>
             </FadeUp>
           </div>
-
-          <FadeUp mode="load" delay={0.3} y={0} className="home-hero-visual-col">
-            <HeroPeak />
-          </FadeUp>
         </div>
       </section>
 
