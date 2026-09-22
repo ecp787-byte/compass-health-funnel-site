@@ -56,7 +56,7 @@ input,select{font-family:inherit;font-size:16px;}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   font-family:var(--font-sans);font-weight:700;font-size:15.5px;letter-spacing:0.01em;
-  padding:16px 26px;border-radius:var(--radius-m);border:1px solid transparent;cursor:pointer;text-decoration:none;
+  padding:16px 28px;border-radius:var(--radius-pill);border:1px solid transparent;cursor:pointer;text-decoration:none;
   transition:filter .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease;white-space:nowrap;
   min-height:52px; /* large tap target */
 }
@@ -72,6 +72,42 @@ input,select{font-family:inherit;font-size:16px;}
 .brand-mark{width:28px;height:auto;flex:none;display:block;filter:drop-shadow(0 2px 6px rgba(11,11,11,0.3));}
 .brand-word{display:block;font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:0.04em;}
 .brand-sub{display:block;font-size:9.5px;font-weight:700;letter-spacing:0.14em;color:var(--text-muted);margin-top:2px;}
+
+/* ============ ANNOUNCEMENT / STATUS PILLS ============
+   A small rounded chip that sits above a headline - the "here's the one
+   thing you need to know" signal, borrowed from Thatch's structure. Two
+   surface variants so it reads correctly on both the dark photo hero and
+   light card surfaces. Content is always a real, compliant claim already
+   used elsewhere on the page (never a fabricated stat or trust signal). */
+.pill-badge{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;
+  padding:7px 18px 7px 9px;border-radius:var(--radius-pill);
+  font-size:13px;font-weight:600;letter-spacing:0.01em;
+  background:rgba(246,245,242,0.1);border:1px solid var(--on-dark-line);color:var(--on-dark);
+}
+.pill-badge-dot{
+  width:21px;height:21px;border-radius:50%;flex:none;
+  background:var(--btn-gradient);
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.pill-badge-dot svg{width:12px;height:12px;stroke:#fff;stroke-width:2.4;}
+.pill-badge-light{background:var(--accent-soft);border-color:transparent;color:var(--accent);}
+
+/* A single, quiet credibility line - the restrained stand-in for a whole
+   banded trust strip. One line of real, already-stated facts, not a row
+   of decorative badges competing with the hero. */
+.hero-trust-line{
+  margin-top:22px;font-size:13px;color:var(--on-dark-muted);
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+}
+.hero-trust-line b{color:var(--on-dark);font-weight:600;}
+.hero-trust-dot{width:3px;height:3px;border-radius:50%;background:var(--on-dark-muted);flex:none;}
+
+/* A flat accent color for emphasis inside a headline - not a gradient
+   clip. Gradient-clipped headline text is one of the fastest tells of a
+   generated landing page; a plain color shift reads as a deliberate
+   typographic choice instead. */
+.text-accent-flat{color:var(--accent-4);}
 
 /* ============================================================================
    LANDING PAGE
@@ -258,7 +294,7 @@ input,select{font-family:inherit;font-size:16px;}
 .site-footer-brand .brand-sub{color:var(--on-dark-muted);}
 .site-footer-tagline{
   margin-top:18px;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--accent-2);
+  color:var(--accent-4);
 }
 
 .compliance-footer{padding-top:20px;margin-top:20px;border-top:1px solid var(--on-dark-line);}
@@ -281,14 +317,20 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .section-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);}
 .section-label::before{content:'';width:26px;height:1px;background:var(--accent);flex:none;}
 
-/* Sticky header - sits transparent over the dark hero at the top of the
-   page (light text, since the hero behind it is Obsidian), then gains a
-   blurred light surface and dark text once the page has scrolled past the
-   hero, via .is-scrolled toggled in JS. */
+/* Sticky header - fully transparent over the hero, no bar or scrim behind
+   it at all: the logo and nav words just sit directly on the photo, the
+   way a masthead sits on a page rather than floating in its own strip.
+   It only gains a surface once the page has scrolled past the hero and
+   the words would otherwise sit on light page content, via .is-scrolled
+   toggled in JS. */
 .home-header{
-  position:sticky;top:0;z-index:40;background:rgba(11,11,11,0.22);color:var(--on-dark);
+  position:fixed;top:0;left:0;right:0;z-index:40;background:transparent;color:var(--on-dark);
   border-bottom:1px solid transparent;
   transition:background-color .25s ease, backdrop-filter .25s ease, box-shadow .25s ease, border-color .25s ease, color .25s ease;
+}
+.home-header:not(.is-scrolled) .home-brand,
+.home-header:not(.is-scrolled) .home-nav a:not(.btn){
+  text-shadow:0 1px 12px rgba(11,11,11,0.55);
 }
 .home-header.is-scrolled{
   background:rgba(255,255,255,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -303,33 +345,80 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
   position:relative;font-size:14px;font-weight:600;text-decoration:none;color:inherit;padding-bottom:3px;
 }
 .home-nav a:not(.btn)::after{
-  content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent-2);
+  content:'';position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--accent-4);
   transition:right .3s cubic-bezier(0.22,1,0.36,1);
 }
 .home-header.is-scrolled .home-nav a:not(.btn)::after{background:var(--accent);}
 .home-nav a:not(.btn):hover::after{right:0;}
-.home-nav a:hover{color:var(--accent-2);}
+.home-nav a:hover{color:var(--accent-4);}
 .home-header.is-scrolled .home-nav a:hover{color:var(--accent);}
 .home-nav-cta{padding:11px 20px;min-height:auto;font-size:14px;}
 .home-nav-pill{border-radius:999px;}
 
-/* Hero - a real photograph (not an illustration) of a mountain sunrise,
-   matching the brand kit's own dark hero mockup - the one place the
-   mountain mood is shown at full strength. A dark Obsidian gradient sits
+.home-nav-dropdown{position:relative;}
+.home-nav-dropdown-trigger{
+  display:flex;align-items:center;gap:5px;background:none;border:none;padding:0 0 3px;
+  font:inherit;font-size:14px;font-weight:600;color:inherit;cursor:pointer;
+}
+.home-nav-dropdown-caret{width:12px;height:12px;stroke:currentColor;stroke-width:2;flex:none;transition:transform .2s ease;}
+.home-nav-dropdown-trigger[aria-expanded="true"] .home-nav-dropdown-caret{transform:rotate(180deg);}
+.home-nav-dropdown-trigger:hover{color:var(--accent-4);}
+.home-header.is-scrolled .home-nav-dropdown-trigger:hover{color:var(--accent);}
+.home-nav-dropdown-menu{
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);width:264px;
+  background:var(--surface);color:var(--text);border-radius:var(--radius-m);
+  box-shadow:0 28px 56px -24px rgba(11,11,11,0.45);border:1px solid var(--line);
+  padding:8px;display:flex;flex-direction:column;gap:2px;z-index:50;
+}
+.home-nav-dropdown-menu a{
+  display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:var(--radius-s);
+  text-decoration:none;color:var(--text);transition:background-color .15s ease;
+}
+.home-nav-dropdown-menu a:hover{background:var(--accent-soft);}
+.home-nav-dropdown-item-label{font-size:13.5px;font-weight:700;}
+.home-nav-dropdown-item-body{font-size:12px;color:var(--text-muted);line-height:1.4;}
+
+.home-nav-burger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  width:36px;height:36px;background:none;border:none;padding:0;cursor:pointer;color:inherit;flex:none;
+}
+.home-nav-burger-bar{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s ease, opacity .2s ease;}
+.home-mobile-menu{display:none;}
+
+@media (max-width:760px){
+  .home-nav > a:not(.btn),
+  .home-nav-dropdown{display:none;}
+  .home-nav{gap:14px;}
+  .home-nav-burger{display:flex;}
+  .home-mobile-menu{
+    display:flex;flex-direction:column;
+    background:var(--surface);color:var(--text);
+    padding:8px 20px 18px;border-top:1px solid var(--line);
+    box-shadow:0 24px 48px -28px rgba(11,11,11,0.4);
+  }
+  .home-mobile-menu-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-top:14px;margin-bottom:2px;}
+  .home-mobile-menu a{
+    padding:12px 0;font-size:15.5px;font-weight:600;color:var(--text);text-decoration:none;
+    border-bottom:1px solid var(--line);
+  }
+}
+
+/* Hero - a real photograph of a father and daughter at the shoreline, not
+   an illustration or stock-abstract crop. A dark Obsidian gradient sits
    over the photo so the left-aligned headline stays legible while the
-   sunburst peak stays visible through it. Single column throughout; the
+   photo itself stays visible through it. Single column throughout; the
    text block is width-capped so the photo has room to read as a photo
    rather than being squeezed into an illustration-sized box. */
 .home-hero{
   position:relative;overflow:hidden;padding-block:72px 64px;
   background:
-    linear-gradient(180deg, rgba(11,11,11,0.93) 0%, rgba(11,11,11,0.74) 48%, rgba(11,11,11,0.56) 100%),
-    var(--obsidian) url('../assets/hero-mountain.jpg') center 58% / cover no-repeat;
+    linear-gradient(180deg, rgba(11,11,11,0.9) 0%, rgba(11,11,11,0.68) 46%, rgba(11,11,11,0.5) 100%),
+    var(--obsidian) url('../assets/hero-embrace.jpg') center 40% / cover no-repeat;
 }
 .home-hero .wrap{display:grid;grid-template-columns:1fr;gap:0;align-items:center;}
 .home-hero-copy-col{max-width:600px;}
 .home-hero-eyebrow{color:var(--on-dark-muted);}
-.home-hero-eyebrow::before{background:var(--accent-2);}
+.home-hero-eyebrow::before{background:var(--accent-4);}
 .home-hero-title{
   font-family:var(--font-display);font-weight:800;letter-spacing:-0.02em;
   font-size:clamp(30px,7vw,60px);line-height:1.04;margin-bottom:24px;
@@ -346,23 +435,22 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong);}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
 .home-hero .btn-ghost{color:var(--on-dark);border-color:var(--on-dark-line);}
-.home-hero .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
+.home-hero .btn-ghost:hover{border-color:var(--accent-4);color:var(--accent-4);}
 .btn-primary:hover{transform:translateY(-2px);}
 
 @media (min-width:600px){
   .home-hero-title{font-size:clamp(28px,5vw,44px);}
 }
 
-/* The interactive wayfinding widget, a full-width band directly below the
-   hero rather than crowding it. */
-.home-coverage-path-section{
-  padding-block:60px;border-bottom:1px solid var(--line);
-  background-image:var(--aurora-bg-soft);background-repeat:no-repeat;background-position:top center;background-color:var(--bg);
-}
-.home-coverage-path-inner{max-width:580px;margin-inline:auto;}
+/* ============ HERO STEPPER ============
+   The real "Find your direction" widget (CoveragePathStepper), not a
+   mockup of it - one instance, full logic intact. In-flow below the
+   copy on mobile; a floating card over the hero photo at desktop, the
+   same visual slot the old static preview card used to occupy. */
+.home-hero-stepper{margin-top:36px;position:relative;z-index:2;}
 .coverage-path{
   position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-l);
-  padding:30px 26px 32px;box-shadow:0 28px 56px -34px rgba(11,11,11,0.32);overflow:hidden;
+  padding:26px 24px 28px;box-shadow:0 28px 56px -34px rgba(11,11,11,0.32);overflow:hidden;
 }
 .coverage-path-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;}
 .coverage-path-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);}
@@ -379,8 +467,12 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
   cursor:pointer;text-align:left;transition:border-color .2s ease, background-color .2s ease, transform .2s ease;
 }
 .coverage-path-option:hover{border-color:var(--accent);background:var(--accent-soft);transform:translateY(-2px);}
-.coverage-path-option-arrow{color:var(--accent);opacity:0;transition:opacity .2s ease, transform .25s cubic-bezier(0.22,1,0.36,1);}
+.coverage-path-option-arrow{color:var(--accent);opacity:0;transition:opacity .2s ease, transform .25s cubic-bezier(0.22,1,0.36,1);margin-left:auto;}
 .coverage-path-option:hover .coverage-path-option-arrow{opacity:1;transform:translateX(3px);}
+.coverage-path-option-tile{gap:9px;padding:13px 12px;}
+.coverage-path-option-icon{width:17px;height:17px;flex:none;display:flex;}
+.coverage-path-option-icon svg{width:100%;height:100%;stroke:var(--text-muted);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke-color .2s ease;}
+.coverage-path-option:hover .coverage-path-option-icon svg{stroke:var(--accent);}
 .coverage-path-back{align-self:flex-start;background:none;border:none;padding:0;margin-bottom:14px;font-size:12.5px;font-weight:700;color:var(--text-muted);cursor:pointer;}
 .coverage-path-back:hover{color:var(--accent);}
 .coverage-path-result-copy{font-size:15px;line-height:1.6;color:var(--text-muted);margin-bottom:22px;}
@@ -388,24 +480,97 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
 .coverage-path-restart{background:none;border:none;padding:0;font-size:13px;font-weight:700;color:var(--text-muted);cursor:pointer;}
 .coverage-path-restart:hover{color:var(--accent);}
 
-/* Value props, reframed as a numbered "waypoint" list connected by a
-   route line rather than three identical cards. */
+/* Coverage-for-every-stage - a "who it's for" directory grid, deliberately
+   distinct from the waypoints section just below it (icon cards here vs.
+   a photo + plain-numeral editorial list there) so the two don't read as
+   the same section twice. Anchors from the header's Coverage dropdown
+   land here; scroll-margin-top clears the fixed header. */
+#coverage-individual,
+#coverage-self-employed,
+#coverage-business,
+#coverage-marketplace{scroll-margin-top:104px;}
+.home-coverage-stages{padding-block:76px;background:var(--surface-alt);border-block:1px solid var(--line);}
+.home-coverage-stages-head{margin-bottom:40px;}
+.home-coverage-stages-head-text{max-width:480px;}
+.home-coverage-stages-title{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3.4vw,34px);line-height:1.25;margin-top:14px;margin-bottom:14px;}
+.home-coverage-stages-copy{font-size:15.5px;line-height:1.6;color:var(--text-muted);max-width:480px;}
+.home-coverage-stages-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+.home-coverage-stage-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-l);
+  padding:28px 24px 26px;display:flex;flex-direction:column;gap:12px;
+  transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.home-coverage-stage-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 24px 44px -30px rgba(11,11,11,0.4);}
+.home-coverage-stage-icon{
+  width:44px;height:44px;border-radius:var(--radius-pill);background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;flex:none;
+}
+.home-coverage-stage-icon svg{width:20px;height:20px;stroke:var(--accent);stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.home-coverage-stage-card h3{font-family:var(--font-display);font-size:17px;font-weight:700;}
+.home-coverage-stage-card p{font-size:14px;line-height:1.55;color:var(--text-muted);flex:1;}
+.home-coverage-stage-link{font-size:13.5px;font-weight:700;color:var(--text);text-decoration:none;display:inline-flex;align-items:center;gap:4px;}
+.home-coverage-stage-link:hover{color:var(--accent);}
+
+/* Final CTA - a confident closing band, warmer and brighter than the flat
+   obsidian footer directly beneath it so the two don't blur together. */
+.home-final-cta{
+  padding-block:64px;background:
+    radial-gradient(circle at 12% 20%, rgba(87,113,95,0.22) 0%, transparent 50%),
+    radial-gradient(circle at 92% 82%, rgba(201,191,168,0.14) 0%, transparent 46%),
+    var(--stone);
+  color:var(--on-dark);
+}
+.home-final-cta-inner{display:flex;flex-direction:column;gap:28px;}
+.home-final-cta-copy .section-label{color:var(--on-dark-muted);}
+.home-final-cta-copy .section-label::before{background:var(--accent);}
+.home-final-cta-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.2;margin-top:14px;margin-bottom:14px;max-width:560px;}
+.home-final-cta-copy p{font-size:16px;line-height:1.6;color:var(--on-dark-muted);max-width:480px;}
+.home-final-cta-actions{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
+.home-final-cta-note{font-size:13px;color:var(--on-dark-muted);}
+
+/* Understanding your options - plain text columns, deliberately unstyled
+   next to the icon cards above and the photo list below, so three
+   consecutive sections don't all reach for the same card formula. */
+.home-options-explainer{padding-block:64px;background:var(--bg);}
+.home-options-head{max-width:640px;margin-bottom:36px;}
+.home-options-title{font-family:var(--font-display);font-weight:700;font-size:clamp(22px,3vw,30px);line-height:1.3;margin-top:14px;}
+.home-options-grid{display:grid;grid-template-columns:1fr;gap:28px;padding-block:28px;border-block:1px solid var(--line);}
+.home-options-col{padding-inline:0;}
+.home-options-col-num{display:block;font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--accent);letter-spacing:0.04em;margin-bottom:10px;}
+.home-options-col h3{font-family:var(--font-display);font-size:17px;font-weight:700;margin-bottom:8px;}
+.home-options-col p{font-size:14.5px;line-height:1.6;color:var(--text-muted);}
+.home-options-link{display:inline-flex;align-items:center;gap:6px;margin-top:26px;font-size:14px;font-weight:700;color:var(--text);text-decoration:none;}
+.home-options-link:hover{color:var(--accent);}
+
+/* Value props - an asymmetric photo + editorial list, replacing the
+   icon-in-a-colored-square ×3 formula (the single most recognizable
+   generated-landing-page pattern) with a real photo doing the emotional
+   work and plain numerals carrying the list - no icon badges. */
 .home-waypoints{padding-block:76px;background:var(--bg);}
 .home-waypoints-head{max-width:620px;margin-bottom:8px;}
 .home-waypoints-title{font-family:var(--font-display);font-weight:700;font-size:clamp(24px,3.4vw,34px);line-height:1.25;margin-top:14px;}
-.home-waypoints-list{position:relative;margin-top:24px;}
-.home-waypoints-list::before{
-  content:'';position:absolute;top:36px;bottom:36px;left:27px;width:1px;
-  background-image:repeating-linear-gradient(to bottom, var(--line-strong) 0 4px, transparent 4px 10px);
+.home-waypoints-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px;}
+
+.home-waypoint-photo{
+  position:relative;border-radius:var(--radius-l);overflow:hidden;height:420px;
+  background:var(--accent-3-soft);
 }
+.home-waypoint-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;}
+.home-waypoint-photo-caption{
+  position:absolute;left:0;right:0;bottom:0;padding:28px 26px 24px;
+  background:linear-gradient(180deg, transparent 0%, rgba(11,11,11,0.78) 100%);
+  color:var(--on-dark);font-family:var(--font-display);font-size:19px;font-weight:600;line-height:1.35;
+}
+
+.home-waypoints-text{display:flex;flex-direction:column;}
 .home-waypoint{
-  position:relative;display:grid;grid-template-columns:56px 1fr;column-gap:22px;
-  padding-block:28px;border-top:1px solid var(--line);transition:background-color .2s ease;
+  position:relative;display:flex;gap:22px;padding-block:28px;border-top:1px solid var(--line);
 }
-.home-waypoint:first-child{border-top:none;}
-.home-waypoint:hover{background:var(--surface);}
-.home-waypoint .cat-badge{position:relative;z-index:1;}
-.home-waypoint-num{display:block;font-family:var(--font-display);font-size:12px;font-weight:800;letter-spacing:0.1em;color:var(--tint-fg, var(--accent));margin-bottom:8px;}
+.home-waypoint:first-child{border-top:none;padding-top:0;}
+.home-waypoint-num{
+  flex:none;font-family:var(--font-display);font-size:32px;font-weight:700;
+  color:var(--tint-fg, var(--accent));line-height:1;width:52px;
+}
 .home-waypoint-body h2{font-size:19px;margin-bottom:10px;}
 .home-waypoint-body p{font-size:14.5px;line-height:1.65;color:var(--text-muted);margin-bottom:14px;max-width:52ch;}
 .home-waypoint-body a{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--tint-fg, var(--accent));text-decoration:none;}
@@ -558,6 +723,7 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
    ========================================================================== */
 @media (max-width:480px){
   .coverage-path-options{grid-template-columns:1fr;}
+  .coverage-path-options-tiles{grid-template-columns:1fr 1fr;}
   .home-header-inner{padding-block:12px;}
   .brand-word{font-size:13px;white-space:nowrap;}
   .brand-sub{display:none;}
@@ -573,6 +739,7 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
   .article-related-grid{grid-template-columns:repeat(2,1fr);}
   .home-learn-teaser-layout{grid-template-columns:1.1fr 0.9fr;align-items:stretch;}
   .home-learn-secondary-list{justify-content:center;}
+  .home-coverage-stages-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media (min-width:960px){
   .learn-grid{grid-template-columns:repeat(3,1fr);}
@@ -583,9 +750,23 @@ a:hover .cta-arrow, button:hover .cta-arrow{transform:translateX(4px);}
   .home-hero{
     padding-block:104px 116px;
     background:
-      linear-gradient(100deg, rgba(11,11,11,0.96) 0%, rgba(11,11,11,0.93) 38%, rgba(11,11,11,0.6) 55%, rgba(11,11,11,0.22) 78%, rgba(11,11,11,0.08) 100%),
-      var(--obsidian) url('../assets/hero-mountain.jpg') center 52% / cover no-repeat;
+      linear-gradient(100deg, rgba(11,11,11,0.95) 0%, rgba(11,11,11,0.88) 34%, rgba(11,11,11,0.52) 56%, rgba(11,11,11,0.18) 78%, rgba(11,11,11,0.06) 100%),
+      var(--obsidian) url('../assets/hero-embrace.jpg') center 32% / cover no-repeat;
   }
-  .home-waypoint{grid-template-columns:64px 1fr;column-gap:32px;padding-block:36px;}
-  .home-waypoints-list::before{left:31px;}
+  .home-waypoints-grid{grid-template-columns:0.85fr 1.15fr;gap:40px;align-items:stretch;}
+  .home-waypoint-photo{height:100%;min-height:460px;}
+  .home-waypoints-text{justify-content:center;}
+
+  .home-hero-stepper{
+    position:absolute;right:64px;top:50%;transform:translateY(-50%);
+    width:320px;margin-top:0;
+  }
+
+  .home-coverage-stages-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;}
+  .home-coverage-stages-grid{grid-template-columns:repeat(4,1fr);}
+
+  .home-options-grid{grid-template-columns:repeat(3,1fr);gap:40px;}
+
+  .home-final-cta-inner{flex-direction:row;align-items:center;justify-content:space-between;gap:40px;}
+  .home-final-cta-actions{align-items:flex-end;}
 }

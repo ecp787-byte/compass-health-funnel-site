@@ -10,6 +10,37 @@ import { EASE, useMotionSafe } from '../motion/primitives.jsx';
 const WHO_OPTIONS = ['Individual', 'Family', 'Self-Employed', 'Business'];
 const CURRENT_OPTIONS = ['Marketplace', 'Employer', 'Private', 'Not Insured', 'Not Sure'];
 
+// Small grounded glyphs for the "who" tiles only - step 2/3 stay plain text
+// rows since they don't map to a tidy 2x2 grid.
+const WHO_ICONS = {
+  Individual: (
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="8" r="3.4" />
+      <path d="M5 20c0-3.87 3.13-7 7-7s7 3.13 7 7" />
+    </svg>
+  ),
+  Family: (
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="8.5" cy="8" r="3" />
+      <circle cx="16" cy="9.2" r="2.3" />
+      <path d="M2.5 20c0-3.3 2.68-6 6-6s6 2.7 6 6" />
+      <path d="M14.5 14.6c2.6.4 4.5 2.5 4.5 5.4" />
+    </svg>
+  ),
+  'Self-Employed': (
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" />
+    </svg>
+  ),
+  Business: (
+    <svg viewBox="0 0 24 24" fill="none">
+      <rect x="4" y="3" width="16" height="18" rx="1" />
+      <path d="M9 21v-4h6v4M8.5 8h1.2M14.3 8h1.2M8.5 12h1.2M14.3 12h1.2" />
+    </svg>
+  ),
+};
+
 const NEXT_STEP_COPY = {
   'Not Insured': 'Since you’re not currently covered, the fastest path is usually seeing what you qualify for directly.',
   'Not Sure': 'When it’s not clear what you have, a quick side-by-side of your options is the easiest way to find out.',
@@ -61,17 +92,18 @@ export default function CoveragePathStepper() {
         {step === 1 && (
           <StepShell stepKey="step1">
             <h3 className="coverage-path-q">What are you looking for?</h3>
-            <div className="coverage-path-options">
+            <div className="coverage-path-options coverage-path-options-tiles">
               {WHO_OPTIONS.map((opt) => (
                 <button
                   type="button"
                   key={opt}
-                  className="coverage-path-option"
+                  className="coverage-path-option coverage-path-option-tile"
                   onClick={() => {
                     setWho(opt);
                     setStep(2);
                   }}
                 >
+                  <span className="coverage-path-option-icon" aria-hidden="true">{WHO_ICONS[opt]}</span>
                   {opt}
                   <span className="coverage-path-option-arrow" aria-hidden="true">→</span>
                 </button>

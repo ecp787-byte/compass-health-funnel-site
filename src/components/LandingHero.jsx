@@ -27,6 +27,15 @@ export default function LandingHero({ onStart }) {
       </div>
 
       <div className="landing-body">
+        <span className="pill-badge pill-badge-light" style={{ alignSelf: 'center' }}>
+          <span className="pill-badge-dot" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 13l4 4L19 7" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          No obligation to enroll
+        </span>
+
         <h1 className="landing-headline">See What Private Health Plans You May Qualify For</h1>
         <p className="landing-subcopy">
           Answer a few questions to compare health coverage options available in your area.

@@ -158,12 +158,13 @@ export function StaggerContainer({ children, className, stagger = 0.09, delay = 
   );
 }
 
-export function StaggerItem({ children, className, y = 16 }) {
+export function StaggerItem({ children, className, y = 16, id }) {
   const safe = useMotionSafe();
-  if (!safe) return <div className={className}>{children}</div>;
+  if (!safe) return <div className={className} id={id}>{children}</div>;
   return (
     <motion.div
       className={className}
+      id={id}
       variants={{
         hidden: { opacity: 0, y },
         show: { opacity: 1, y: 0, transition: { duration: DURATION, ease: EASE } },
